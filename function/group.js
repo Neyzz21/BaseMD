@@ -13,11 +13,11 @@ let metadata = await conn.groupMetadata(update.id)
 let participants = update.participants
 for (let num of participants) {
 if (update.action == 'remove'){
-var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Bye👋'}, type: 1 }]
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: ''}, type: 1 }]
 await conn.sendMessage(
 update.id, 
 {
-text: `*Sayonara @${num.split("@")[0]}*\n*kalo mau balik lagi ke group ini, wajib bawa gorengan 1 truk😊*`,
+text: `* {num.split("")[0]}*\n**`,
 buttons: button,
 footer: metadata.subject, 
 mentions: [num] })
@@ -42,11 +42,11 @@ let metadata = await conn.groupMetadata(update.id)
 let participants = update.participants
 for (let num of participants) {
 if (update.action == 'add') {
-var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Welcome👋'}, type: 1 }]
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: ''}, type: 1 }]
 await conn.sendMessage(
 update.id, 
 { 
-text: `*Hello @${num.split("@")[0]}*\n*Welcome to ${metadata.subject}* \n\n*Jangan Lupa Intro*\n*Nama:*\n*Umur:*\n*Hobi:*\n*Askot:*\n\n*Sering² Baca Deskripsi Ya Kak🙏*`,
+text: `* {num.split("")[0]}*\n* to ${metadata.subject}* \n\n* *`,
 buttons: button, 
 footer: metadata.subject,
 mentions: [num] })
