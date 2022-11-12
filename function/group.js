@@ -66,11 +66,11 @@ let metadata = await conn.groupMetadata(update.id)
 let participants = update.participants
 for (let num of participants) {
 if (update.action == 'promote') {
-var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Selamat🎉'}, type: 1 }]
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: ''}, type: 1 }]
 await conn.sendMessage(
 update.id, 
 { 
-text: `*@${num.split("@")[0]} Naik jabatan jadi admin grup*`,
+text: `*{num.split("")[0]} *`,
 buttons: button, 
 footer: metadata.subject,
 mentions: [num] })
@@ -90,11 +90,11 @@ let metadata = await conn.groupMetadata(update.id)
 let participants = update.participants
 for (let num of participants) {
 if (update.action == 'demote') {
-var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Selamat🎉'}, type: 1 }]
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: ''}, type: 1 }]
 await conn.sendMessage(
 update.id, 
 { 
-text: `*@${num.split("@")[0]} Turun jabatan jadi admin grup*`,
+text: `*{num.split("")[0]} *`,
 buttons: button, 
 footer: metadata.subject,
 mentions: [num] })
