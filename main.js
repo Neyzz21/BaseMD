@@ -36,8 +36,7 @@ conn.reply = (from, content, msg) => conn.sendMessage(from, { text: content }, {
 
 conn.ws.on('CB:call', async (json) => {
 const user_Call = json.content[0].attrs['call-creator']
-conn.sendMessage(user_Call, { text: 'Maaf kamu terdeteksi telepon bot!\n5 detik lagi kamu akan,\ndiblokir otomatis oleh bot.'})
-await sleep()
+conn.sendMessage(user_Call)
 conn.updateBlockStatus(user_Call, 'return')
 })
 
