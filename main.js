@@ -5,7 +5,6 @@ const chalk = require('chalk')
 const logg = require('pino')
 const { serialize, fetchJson, sleep, getBuffer } = require("./function/myfunc");
 const { nocache, uncache } = require('./function/chache.js');
-const { groupResponse_Welcome, groupResponse_Remove, groupResponse_Promote, groupResponse_Demote } = require('./function/group.js')
 
 let setting = JSON.parse(fs.readFileSync('./options/config.json'));
 let session = `./${setting.sessionName}.json`
@@ -34,6 +33,12 @@ require('./index')(conn, msg, m, setting, memory)
 conn.ev.on('creds.update', () => saveState)
 
 conn.reply = (from, content, msg) => conn.sendMessage(from, { text: content }, { quoted: msg })
+
+conn.ws.on('CB:call', async (json) => {
+const user_Call = json.content[0].attrs['call-creator']
+conn.sendMessage(user_Call, { text: 'Maaf kamu terdeteksi telepon bot!\n5 detik lagi kamu akan,\ndiblokir otomatis oleh bot.'})
+await sleep()
+conn.updateBlockStatus(user_Call, 'return')
 })
 
 conn.ev.on('connection.update', (update) => {
