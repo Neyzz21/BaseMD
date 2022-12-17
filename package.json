@@ -4,7 +4,7 @@
   "description": "Base Bot By Lexxy Official",
   "main": "main.js",
   "scripts": {
-    "start": "npm i -g pm2 && pm2 start main.js && pm2 save && pm2 logs"
+    "start": "node main.js"
   },
   "author": "Lexxy Official",
   "license": "ISC",
